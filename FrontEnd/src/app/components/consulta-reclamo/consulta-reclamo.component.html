@@ -1,0 +1,116 @@
+<div>
+    <form class="content"  (submit) = "consultaReclamo()">
+    <div class="submit-form" >
+  
+         <div class="row">
+            <div class="col-lg-12">
+                <h6>Fernando Flores Carita - Consulta Reclamo</h6>
+            </div>
+        </div>
+  
+        <div class="row" style="margin-top: 3%">
+
+            <div class="col-lg-4">  
+                <label for="estado">Estado</label>        
+                <select id="estado" name="estado" class="form-control" [(ngModel)] = "estado">        
+                  <option value="0" selected> [Seleccione]  </option> 
+                  <option value="1">Activo</option> 
+                  <option value="2">Inactivo</option>                      
+                </select>        
+            </div>
+
+            <div class="col-lg-4">  
+                <label for="cliente">Cliente</label>        
+                <select id="cliente" name="cliente" class="form-control" [(ngModel)] = "selCliente">        
+                  <option value="0" selected> [Seleccione]  </option>   
+                  <option *ngFor="let aux of listCliente" value="{{ aux.idCliente }}">
+                    {{aux.nombres +", "}}                          
+                    {{aux.apellidos}}
+                    </option>                    
+                </select>        
+            </div>
+
+            <div class="col-lg-4">  
+                <label for="tipoReclamo">Tipo de Reclamo</label>        
+                <select id="tipoReclamo" name="tipoReclamo" class="form-control" [(ngModel)] = "selTipoReclamo">        
+  
+                  <option value="0" selected> [Seleccione]  </option>        
+                  <option *ngFor="let aux of listTipoReclamo" value="{{ aux.idTipoReclamo }}">
+
+                    {{ aux.descripcion }}
+
+                    </option>   
+                  
+                </select>        
+            </div>
+
+
+
+
+            
+
+        </div>
+  
+        <div class="row" style="margin-top: 3%"> 
+                <div class="col-lg-12">
+                    <button class="btn btn-success"  >Filtrar</button>
+                </div>
+        </div>
+
+        <div class="row" style="margin-top: 3%">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Descripción</th>
+
+                        <th>Fecha de Registro</th>
+
+                        <th>Estado</th>
+                        
+                        <th>Cliente</th>
+
+                        <th>Tipo de Reclamo</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor ="let aux of listReclamo">
+
+                        <td>{{aux.idReclamo}}</td>
+                        <td>{{aux.descripcion}}</td>
+                        <td>{{aux.fechaRegistro}}</td>
+                        <td>{{aux.estado}}</td>
+                        <td>{{aux.cliente?.nombres}}, {{aux.cliente?.apellidos}}</td>
+                        <td>{{aux.tipoReclamo?.descripcion}}</td>    
+                    </tr>
+
+
+                </tbody>
+
+
+
+
+
+            </table>
+
+
+
+
+
+        </div>
+  
+    
+      </div>
+  
+     </form>
+  
+  
+    </div>

@@ -1,0 +1,12 @@
+.submit-form {
+
+    max-width: 90%;
+    padding: 5%;
+    background-color: rgba(198, 198, 198, 0.4);
+    margin: auto;
+  
+  }
+
+  .error { 
+    color: red;
+  }

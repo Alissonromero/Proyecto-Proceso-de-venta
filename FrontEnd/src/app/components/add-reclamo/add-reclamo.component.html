@@ -1,0 +1,75 @@
+<div>
+
+    <form class="content"  (submit)= "registraReclamo()" >
+    <div class="submit-form" >
+  
+         <div class="row">
+            <div class="col-lg-12">
+                <h6>Fernando Flores Carita - Registro Reclamo</h6>
+            </div>
+        </div>
+  
+        <div class="row" style="margin-top: 3%">
+                <div class="col-lg-9">
+                    <label for="descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="descripcion"  [(ngModel)] = "reclamo.descripcion" />
+                </div>
+            
+                <div class="col-lg-3">
+
+                    <label for="fechaRegistro">Fecha de Registro</label>
+
+                    <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro" [(ngModel)]= "reclamo.fechaRegistro" >
+
+                </div>
+         </div>
+  
+        <div class="row" style="margin-top: 3%">
+
+            <div class="col-lg-4">  
+                <label for="estado">Estado</label>        
+                <select id="estado" name="estado" class="form-control" [(ngModel)]="reclamo.estado">        
+                    <option value="-1"> [Seleccione] </option>        
+                    <option value="1">Activo</option> 
+                    <option value="2">Inactivo</option>                      
+                </select>        
+            </div>
+
+            <div class="col-lg-4">  
+                <label for="cliente">Cliente</label>        
+                <select id="cliente" name="cliente" class="form-control" [(ngModel)]="reclamo.cliente!.idCliente">        
+                  <option value="0"> [Seleccione] </option>        
+                  <option *ngFor="let aux of lstClientes" value="{{aux.idCliente}}">
+                          {{aux.nombres +", "}}                          
+                          {{aux.apellidos}}
+                  </option>                      
+                </select>        
+            </div>
+
+            <div class="col-lg-4">  
+                <label for="tipoReclamo">Tipo de Reclamo</label>        
+                <select id="tipoReclamo" name="tipoReclamo" class="form-control" [(ngModel)]="reclamo.tipoReclamo!.idTipoReclamo">        
+                  <option value="0"> [Seleccione] </option>        
+                  <option *ngFor="let aux of lstTipoReclamo" value="{{aux.idTipoReclamo}}">
+                          {{aux.descripcion}}
+                  </option>                      
+                </select>        
+            </div>
+
+
+
+        </div>
+  
+        <div class="row" style="margin-top: 3%"> 
+                <div class="col-lg-12">
+                    <button class="btn btn-success"  >Enviar</button>
+                </div>
+        </div>
+  
+    
+      </div>
+  
+     </form>
+  
+  
+    </div>

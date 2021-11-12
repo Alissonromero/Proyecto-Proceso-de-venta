@@ -1,0 +1,206 @@
+
+<div>
+
+  
+
+    <form class="content" (submit) ="inserta()" >
+  
+    <div class="submit-form" >
+  
+     
+  
+    
+  
+     <div class="row">
+  
+       <div class="col-lg-12">
+  
+       <h6>Registro de proveedor</h6>
+  
+      </div>
+  
+      </div>
+  
+    
+  
+     
+  
+     <div class="row" style="margin-top: 3%">
+  
+      <div class="col-lg-6">
+  
+       <label for="razonsocial">Razon Social</label>
+  
+        <input type="text" class="form-control" name="razonsocial" id="razonsocial" [(ngModel)] ="proveedor.razonsocial"/>
+  
+       </div>
+  
+    
+  
+      <div class="col-lg-6">
+  
+        <label for="ruc">ruc</label>
+  
+        <input type="text" class="form-control" name="ruc" id="ruc" maxlength="15" [(ngModel)] ="proveedor.ruc"/>
+  
+      </div>
+  
+    
+  
+     </div>
+  
+    
+  
+       
+  
+     <div class="row"> 
+  
+      <div class="col-lg-6">
+  
+      <label for="Direccion">Direccion</label>
+  
+       <input type="text" class="form-control" id="Direccion" name="Direccion" [(ngModel)] ="proveedor.direccion" />
+  
+      </div>
+  
+    
+  
+     
+  
+    
+  
+      <div class="col-lg-6">
+  
+       <label for="telefono">Telefono</label>
+  
+      <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)] ="proveedor.telefono"  >
+  
+      </div>
+  
+    
+  
+     </div>
+
+
+
+
+     <div class="col-lg-6">
+  
+        <label for="celular">celular</label>
+   
+       <input type="text" class="form-control" id="celular" name="celular" [(ngModel)] ="proveedor.celular" >
+   
+       </div>
+   
+     
+   
+      </div>
+
+
+
+
+
+
+
+      
+     <div class="col-lg-6">
+  
+        <label for="contacto">contacto</label>
+   
+       <input type="text" class="form-control" id="contacto" name="contacto" [(ngModel)] ="proveedor.contacto" >
+   
+       </div>
+   
+     
+   
+      
+
+
+
+
+
+
+      <div class="col-lg-6">
+  
+        <label for="estado">estado</label>
+   
+       <input type="text" class="form-control" id="estado" name="estado" [(ngModel)] ="proveedor.estado"  >
+   
+       </div>
+   
+     
+   
+      
+
+       <div class="row" style="margin-top: 3%">
+
+        <div class="col-lg-4">
+            <label for="departamento">Departamento</label>
+            <select  id="departamento" name="departamento" class="form-control"  [(ngModel)] = "proveedor.ubigeo!.departamento" (change)="listaProvincia()">
+                <option value="-1"> [Seleccione] </option>   
+                <option *ngFor="let aux of departamentos" value="{{aux}}">
+                    {{aux}}
+                </option>   
+            </select>
+        </div>
+
+        <div class="col-lg-4">
+            <label for="provincia">Provincia</label>
+            <select  id="provincia" name="provincia" class="form-control"  [(ngModel)] = "proveedor.ubigeo!.provincia" (change)="listaDistrito()">
+                <option value="-1"> [Seleccione] </option>   
+                <option *ngFor="let aux of provincias" value="{{aux}}">
+                    {{aux}}
+                </option>   
+            </select>
+        </div>
+
+        <div class="col-lg-4">
+            <label for="distrito">Distrito</label>
+            <select  id="distrito" name="distrito" class="form-control"  [(ngModel)] = "proveedor.ubigeo!.idUbigeo">
+                <option value="-1"> [Seleccione] </option>   
+                <option *ngFor="let aux of distritos" value="{{aux.idUbigeo}}">
+                    {{aux.distrito}}
+                </option>   
+            </select>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+      
+      
+   
+     
+   
+      
+  
+  
+  
+    
+  
+     <div class="row" style="margin-top: 3%"> 
+  
+      <div class="col-lg-12">
+  
+       <button class="btn btn-success" >Enviar</button>
+  
+      </div>
+  
+     </div>
+ 
+  
+    </form>
+    
+  
+   
+  
+
+  
+</div>

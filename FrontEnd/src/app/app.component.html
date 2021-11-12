@@ -1,0 +1,104 @@
+<div>
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Cibertec</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cliente
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="addCliente">Registra </a>
+            <a class="dropdown-item" routerLink="consultaCliente">Consulta </a>
+            <a class="dropdown-item" routerLink="crudCliente">Mantenimiento</a>
+          </div>
+        </li>
+
+
+   <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Marca
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="addMarca">Registra </a>
+            <a class="dropdown-item" routerLink="consultaMarca">Consulta </a>
+            <a class="dropdown-item" routerLink="crudMarca">Mantenimiento</a>
+          </div>
+        </li>
+
+
+ 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Producto
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="addProducto">Registra </a>
+            <a class="dropdown-item" routerLink="consultaProducto">Consulta </a>
+            <a class="dropdown-item" routerLink="crudProducto">Mantenimiento</a>
+          </div>
+        </li>
+               
+ 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Proveedor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="addProveedor">Registra </a>
+            <a class="dropdown-item" routerLink="consultaProveedor">Consulta </a>
+            <a class="dropdown-item" routerLink="crudProveedor">Mantenimiento</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item">
+          <a routerLink="consultaReclamo" class="nav-link">Consulta Reclamo</a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reclamo
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="addReclamo">Registra </a>
+            <a class="dropdown-item" routerLink="consultaReclamo">Consulta </a>
+            <a class="dropdown-item" routerLink="crudReclamo">Mantenimiento</a>
+          </div>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sede
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="addSede">Registra </a>
+            <a class="dropdown-item" routerLink="consultaSede">Consulta </a>
+            <a class="dropdown-item" routerLink="addSede">Mantenimiento</a>
+          </div>
+        </li> 
+
+
+
+      </ul>
+    </div>
+  </nav>
+
+
+  
+
+<div class="container mt-3">
+
+
+  <router-outlet></router-outlet>
+ 
+</div>
+
+</div>

@@ -1,0 +1,237 @@
+<div *ngIf="estadoAlert" class="alert alert-success" role="alert">
+    Se registró correctamente
+</div>
+
+<div *ngIf="estadoAlertAct" class="alert alert-success" role="alert">
+    Se actualizó correctamente
+</div>
+
+<div *ngIf="estadoAlertDel" class="alert alert-success" role="alert">
+    Se eliminó correctamente
+</div>
+
+
+<div class="container">
+    <h3>Crud de Sede</h3>
+
+    <div class="col-md-23">
+
+
+        <div class="row" style="height: 70px">
+            <div class="col-md-2">
+                <input [(ngModel)]="nombreFiltro" class="form-control" id="id_txt_filtro" name="filtro" placeholder="Ingrese el nombre" type="text" maxlength="30" />
+            </div>
+            <div class="col-md-2">
+                <button (click)="listSedeNombre(nombreFiltro)" type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
+            </div>
+
+
+            <div class="col-md-2">
+                <button (click)="limpiarData()" type="button" data-toggle='modal' data-target="#exampleModal" class='btn btn-success' style="width: 150px">REGISTRA</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+
+                    <table id="id_table" class="table table-striped table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">ID</th>
+                                <th style="width: 30%">Nombre</th>
+                                <th style="width: 10%">Dirección</th>
+                                <th style="width: 20%">Código Postal</th>
+                                <th style="width: 10%">País</th>
+                                <th style="width: 10%">Actualizar</th>
+                                <th style="width: 10%">Eliminar</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr *ngFor="let sede of listaSedes">
+                                <td>{{sede.idSede}}</td>
+                                <td>{{sede.nombre}}</td>
+                                <td>{{sede.direccion}}</td>
+                                <td>{{sede.codigoPostal}}</td>
+                                <td>{{sede.pais.nombre}}</td>
+                                <td><button type="button" style="width: 90px" class="btn btn-info btn-sm" (click)="capturandoObj(sede)" data-toggle="modal" data-target="#exampleModalActualizar">Editar</button></td>
+                                <td><button (click)="eliminarSede(sede.idSede)" type="button" style="width: 90px" class="btn btn-info btn-sm" data-toggle='modal' data-target="#exampleModalEliminar">Eliminar</button></td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sede</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="registerForm" class="content" (submit)="registraSede()">
+                        <div class="submit-form">
+                            <div class="form-group  text-center ">
+
+                                <h6>Registro de Sede </h6>
+                            </div>
+
+
+
+
+                            <div class="form-group  ">
+                                <label for="nombre">Nombre</label>
+                                <input formControlName="nombre" type="text" placeholder="Ingrese el nombre de la sede" class="form-control" name="nombre" id="nombre" [(ngModel)]="sede.nombre" />
+                                <span class="text-danger" *ngIf="registerForm.get('nombre')?.hasError('required') && registerForm.get('nombre')?.touched">
+                                    El Nombre <strong>Es requerido</strong>
+                                </span>
+
+
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="direccion">Dirección</label>
+                                <input formControlName="direccion" type="text" placeholder="Ingrese la dirección" class="form-control" name="direccion" id="direccion" [(ngModel)]="sede.direccion" />
+                                <span class="text-danger" *ngIf="registerForm.get('direccion')?.hasError('required') && registerForm.get('direccion')?.touched">
+                                    La dirección <strong>es requerido</strong>
+                                </span>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="distrito">Código postal</label>
+                                <input formControlName="codigoPostal" type="codigoPostal" placeholder="Ingrese el código postal" class="form-control" name="codigoPostal" id="codigoPostal" [(ngModel)]="sede.codigoPostal" />
+                                <span class="text-danger" *ngIf="registerForm.get('codigoPostal')?.hasError('maxlength')&&  registerForm.get('codigoPostal')?.touched">
+                                    El código postal debe tener como máximo  <strong>5 caracteres</strong>
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="provincia">País</label>
+                                <select formControlName="pais" id="provincia" name="provincia" class="form-control" [(ngModel)]="sede.pais!.idPais">
+                                    <option value="-1"> [Seleccione] </option>   
+                                    <option *ngFor="let aux of listaPaises" value="{{aux.idPais}}">
+                                        {{aux.nombre}}
+                                    </option>   
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_cerrarM">Close</button>
+
+                            <div class="form-group text-center">
+                                <div class="col-lg-12">
+                                    <button id="id_btn_registra" [disabled]="registerForm.invalid" class="btn btn-success form-control">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sede</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+
+                    <form [formGroup]="registerForm" class="content" (submit)="actualizando()">
+                        <div class="submit-form">
+                            <div class="form-group  text-center ">
+
+                                <h6>Actualizar Sede </h6>
+                            </div>
+
+
+
+
+                            <div class="form-group  ">
+                                <label for="nombre">Nombre</label>
+                                <input formControlName="nombre" type="text" placeholder="Ingrese el nombre de la sede" class="form-control" name="nombre" id="nombre" [(ngModel)]="sede.nombre" />
+                                <span class="text-danger" *ngIf="registerForm.get('nombre')?.hasError('required') && registerForm.get('nombre')?.touched">
+                                    El Nombre <strong>Es requerido</strong>
+                                </span>
+
+
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="direccion">Dirección</label>
+                                <input formControlName="direccion" type="text" placeholder="Ingrese la dirección" class="form-control" name="direccion" id="direccion" [(ngModel)]="sede.direccion" />
+                                <span class="text-danger" *ngIf="registerForm.get('direccion')?.hasError('required') && registerForm.get('direccion')?.touched">
+                                    La dirección <strong>es requerido</strong>
+                                </span>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="distrito">Código postal</label>
+                                <input formControlName="codigoPostal" type="codigoPostal" placeholder="Ingrese el código postal" class="form-control" name="codigoPostal" id="codigoPostal" [(ngModel)]="sede.codigoPostal" />
+                                <span class="text-danger" *ngIf="registerForm.get('codigoPostal')?.hasError('maxlength')&&  registerForm.get('codigoPostal')?.touched">
+                                    El código postal debe tener como máximo  <strong>5 caracteres</strong>
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="provincia">País</label>
+                                <select formControlName="pais" id="provincia" name="provincia" class="form-control" [(ngModel)]="sede.pais!.idPais">
+                                    <option value="-1"> [Seleccione] </option>   
+                                    <option *ngFor="let aux of listaPaises" value="{{aux.idPais}}">
+                                        {{aux.nombre}}
+                                    </option>   
+                                </select>
+                            </div>
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_cerrarMA">Close</button>
+                            <div class="form-group text-center">
+                                <div class="col-lg-12">
+                                    <button id="id_btn_registra" [disabled]="registerForm.invalid" class="btn btn-success form-control">Actualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
